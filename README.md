@@ -22,10 +22,8 @@ To run the application locally on your machine, follow these steps:
 
 - Open the index.html file in your web browser.
 ## Demo video
-<video controls loop>
-    <source src ="O_X_Readme_vid.mp4">
-</video>
 
+https://github.com/Sanidhya-Dobhal/Tic_Tac_Toe_front-end_project/assets/118712234/9570fb0d-45da-4bda-81d8-b8c98948f901
 ## Screenshots
 
 <div style = "height:30px;"></div>
