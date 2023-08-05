@@ -89,7 +89,7 @@ body{
     color:#9905ff;
     top:62vh;
     animation-name:inc_dec;
-    animation-duration:1s;
+    animation-duration:1.25s;
     animation-direction:alternate;
     animation-iteration-count:infinite;
 }
