@@ -106,6 +106,14 @@ function grd_adjust() {
     document.getElementById("mute_bttn").style.left = `${window.innerWidth -117}px`;
     document.getElementsByTagName("a")[0].style.bottom="0px";
 }
+document.addEventListener("keypress",key_stop_ani);
+function key_stop_ani(event)
+{
+    if(event.key == ' '||event.key==="Enter"){
+       stop_ani();
+       document.removeEventListener("keypress",key_stop_ani)
+    }
+}
 document.addEventListener("click", stop_ani);
 function stop_ani() {
     clearInterval(outerInt);
