@@ -157,7 +157,33 @@ body{
             font-size:60px;
         }
     }
+    .instruct_ng{
+        font-size:19px;
+    }
+    @keyframes inc_dec{
+        from{
+            font-size:14px;
+        }
+        to{
+            font-size:19px;
+        }
+    }
+    .click_css{
+        font-size:19px;
+    }
+    @keyframes click_burst_ani
+    {
+        from{
+            font-size:19px;
+            opacity:1;
+        }
+        to{
+            font-size:23px;
+            opacity:0;
+        }
+    }
 }
+
 @media screen and (max-width:430px)
 {
     #ani_text{
