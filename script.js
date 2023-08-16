@@ -434,6 +434,7 @@ box.addEventListener("mousemove",cursor_change);
 box.addEventListener("mouseout",cursor_normal);
 function cursor_change(event)
 {
+    if(window.innerWidth>800){
     let cursor_char = document.getElementById("cursor_char");
     if(winner==0 && document.documentElement.clientHeight==document.documentElement.scrollHeight)
     {
@@ -456,6 +457,7 @@ function cursor_change(event)
     box.style.cursor ="default";
     cursor_char.style.visibility ="hidden";
     }
+}
 }
 function cursor_normal()
 {
