@@ -241,7 +241,7 @@ function checking_func(pos_arr) {
             line_handler_function = lineslant_1;
         }
     }
-    if (pos_arr.indexOf(1) != -1) {
+    else if (pos_arr.indexOf(1) != -1) {
         if (pos_arr.indexOf(4) != -1 && pos_arr.indexOf(7) != -1) {
             winner = 1;
             cutting_line.style.transform = "rotate(90deg)";
@@ -252,7 +252,7 @@ function checking_func(pos_arr) {
             line_handler_function = linever_2;
         }
     }
-    if (pos_arr.indexOf(2) != -1) {
+    else if (pos_arr.indexOf(2) != -1) {
         if (pos_arr.indexOf(4) != -1 && pos_arr.indexOf(6) != -1) {
             winner = 1;
             cutting_line.style.transformOrigin = "left";
@@ -275,7 +275,7 @@ function checking_func(pos_arr) {
 
         }
     }
-    if (pos_arr.indexOf(3) != -1) {
+    else if (pos_arr.indexOf(3) != -1) {
         if (pos_arr.indexOf(4) != -1 && pos_arr.indexOf(5) != -1) {
             winner = 1;
             cutting_line.style.top = `${104 + 3 * (blocks_arr[0].style.width.substring(0, blocks_arr[0].style.width.length - 2)) / 2}px`;
@@ -283,7 +283,7 @@ function checking_func(pos_arr) {
             line_handler_function = linehor_2;
         }
     }
-    if (pos_arr.indexOf(6) != -1) {
+    else if (pos_arr.indexOf(6) != -1) {
         if (pos_arr.indexOf(7) != -1 && pos_arr.indexOf(8) != -1) {
             winner = 1;
             cutting_line.style.top = `${108 + 5 * (blocks_arr[0].style.width.substring(0, blocks_arr[0].style.width.length - 2)) / 2}px`;
