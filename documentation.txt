@@ -1,0 +1,2 @@
+pos_arr: arr: parameter of the checking_func and this can be zero_pos or cross_pos
+zero_pos and cross_pos: arr: these are the arrays that store the index of the boxes that have zero and the boxes that have cross respectively

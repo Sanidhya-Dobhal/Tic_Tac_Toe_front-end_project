@@ -5,6 +5,39 @@
 body{
     font-family: 'Montserrat', sans-serif;
     font-weight:600; 
+    min-height:100vh;
+    margin:0px;
+}
+header{
+    display:none;
+    justify-content:space-between;
+    opacity:1;
+}
+#score_disp div{
+    border:2px solid black;
+    margin:8px;
+}
+#score_disp p{
+    margin:0 8px;
+    text-align:center;
+}
+#score_disp div:nth-child(1) p:nth-child(1)
+{
+    color:blue;
+}
+#score_disp div:nth-child(2) p:nth-child(1)
+{
+    color:gray;
+    font-size: 2vw;
+    padding-bottom: 0.2vw;
+}
+#score_disp div:nth-child(3) p:nth-child(1)
+{
+    color:red;
+}
+#score_disp{
+    display:flex;
+    font-size:2.3vw;
 }
 #grid_box{
     display:grid;
@@ -327,4 +360,7 @@ a{
     animation-name:cutting_ani;
     animation-duration:200ms;
     animation-timing-function:linear;
+}
+#grid_nd_cut_line{
+    margin-bottom:5vh;
 }

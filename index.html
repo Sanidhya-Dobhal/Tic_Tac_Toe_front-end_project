@@ -24,20 +24,36 @@
     <span id="cursor_char"></span>
     <p id="ani_text"></p>
     <p class="instruct_ng">Click on the screen to start a new game</p>
-    <div id="retry_nd_sound">
-      <img
-        src="volume-mute-removebg-preview (1).png"
-        alt="image not found"
-        id="mute_bttn"
-        title="Sound is off"
-      />
-      <div id="mute">
-        <img src="Mute_bttn.png" id="sound_bttn" title="Sound is on" />
+    <header>
+      <div id="score_disp">
+        <div>
+          <p>O</p>
+          <p>0</p>
+        </div>
+        <div>
+          <p>Draw</p>
+          <p>0</p>
+        </div>
+        <div>
+          <p>X</p>
+          <p>0</p>
+        </div>
       </div>
-      <div id="retry">
-        <img src="Retry_img.png" id="retry_bttn" title="New game" />
+      <div id="retry_nd_sound">
+        <img
+          src="volume-mute-removebg-preview (1).png"
+          alt="image not found"
+          id="mute_bttn"
+          title="Sound is off"
+        />
+        <div id="mute">
+          <img src="Mute_bttn.png" id="sound_bttn" title="Sound is on" />
+        </div>
+        <div id="retry">
+          <img src="Retry_img.png" id="retry_bttn" title="New game" />
+        </div>
       </div>
-    </div> 
+    </header>
     <div id="grid_nd_cut_line">
       <div id="grid_box">
         <div class="Oxgrid"></div>
@@ -52,7 +68,6 @@
       </div>
       <div id="cutting_line"></div>
     </div>
-    <div style="height: 5vh"></div>
     <audio id="circle_sound">
       <source src="Circle_Sound.mp3" format="file/mp3" />
     </audio>
