@@ -1,83 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
-    <link href="style.css" rel = "stylesheet">
-    <script src = "script.js" defer></script>
-    <style>
-        
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link href="style.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+    <style></style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <span id="cursor_char"></span>
-    <p id = "ani_text"></p>
-    <p class = "instruct_ng">Click on the screen to start a new game</p>
+    <p id="ani_text"></p>
+    <p class="instruct_ng">Click on the screen to start a new game</p>
     <div id="retry_nd_sound">
-    <img src = "volume-mute-removebg-preview (1).png" alt = "image not found" id = "mute_bttn" title = "Sound is off">
-    <div id = "mute">
-    <img src = "Mute_bttn.png" id ="sound_bttn" title = "Sound is on">
+      <img
+        src="volume-mute-removebg-preview (1).png"
+        alt="image not found"
+        id="mute_bttn"
+        title="Sound is off"
+      />
+      <div id="mute">
+        <img src="Mute_bttn.png" id="sound_bttn" title="Sound is on" />
+      </div>
+      <div id="retry">
+        <img src="Retry_img.png" id="retry_bttn" title="New game" />
+      </div>
+    </div> 
+    <div id="grid_nd_cut_line">
+      <div id="grid_box">
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+        <div class="Oxgrid"></div>
+      </div>
+      <div id="cutting_line"></div>
     </div>
-    <div id = "retry">
-    <img src  = "Retry_img.png" id ="retry_bttn" title = "New game">
-    </div>
-    </div>
-    <div style = "height:100px;">
-        
-    </div>
-    <div id = "grid_nd_cut_line">
-    <div id = "grid_box">
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-    <div class = "Oxgrid">
-        
-    </div>
-</div>
-<div id="cutting_line">
-
-</div>
-</div>
-<div style = "height:5vh;">
-
-</div>
-<audio id = "circle_sound">
-    <source src = "Circle_Sound.mp3" format = "file/mp3">
-</audio>
-<audio id ="cross_sound">
-    <source src = "Cross_Sound.mp3" format = "file/mp3">
-</audio>
-<div id = "result_div"></div>
-<footer>
-<a href="https://www.flaticon.com/free-icons/mute" title="mute icons" target="_blank">Mute icons created by Mayor Icons - Flaticon</a>
-</footer>
-</body>
+    <div style="height: 5vh"></div>
+    <audio id="circle_sound">
+      <source src="Circle_Sound.mp3" format="file/mp3" />
+    </audio>
+    <audio id="cross_sound">
+      <source src="Cross_Sound.mp3" format="file/mp3" />
+    </audio>
+    <div id="result_div"></div>
+    <footer>
+      <a
+        href="https://www.flaticon.com/free-icons/mute"
+        title="mute icons"
+        target="_blank"
+        >Mute icons created by Mayor Icons - Flaticon</a
+      >
+    </footer>
+  </body>
 </html>
