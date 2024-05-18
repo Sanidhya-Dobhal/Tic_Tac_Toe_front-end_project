@@ -364,3 +364,27 @@ a{
 #grid_nd_cut_line{
     margin-bottom:5vh;
 }
+@media screen and (max-width:730px){
+    #score_disp{
+        height:60px;
+        font-size: 16.79px;
+    }
+    #score_disp div:nth-child(2) p:nth-child(1){
+        font-size:14.6px;
+    }
+}
+@media screen and (max-width:500px)
+{
+    #sound_bttn, #retry_bttn, #mute_bttn{ 
+        width:auto;
+    }
+    #sound_bttn, #mute_bttn{
+        height:8vw;
+    }
+    #retry_bttn{
+        height:9.5vw;
+    }
+    #retry_nd_sound{
+        width:24vw;
+    }
+}

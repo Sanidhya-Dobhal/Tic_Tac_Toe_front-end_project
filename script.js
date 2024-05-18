@@ -110,9 +110,6 @@ function grd_adjust() {
   cutting_line.style.left = `${
     (window.innerWidth - new_width) / 2 + new_blk_width * 0.1
   }px`;
-  document.getElementById("mute_bttn").style.left = `${
-    window.innerWidth - 117
-  }px`;
   document.getElementsByTagName("a")[0].style.bottom = "0px";
 }
 document.addEventListener("keypress", key_stop_ani);
