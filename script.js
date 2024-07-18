@@ -251,8 +251,8 @@ function checking_func(pos_arr) {
         ) /
           2
       }px`;
-      window.addEventListener("resize", linehor_1);
-      line_handler_function = linehor_1;
+      window.addEventListener("resize", linehorGenerator(0));
+      line_handler_function = linehorGenerator(0);
     } else if (pos_arr.indexOf(3) != -1 && pos_arr.indexOf(6) != -1) {
       winner = 1;
       cutting_line.style.transform = "rotate(90deg)";
@@ -412,8 +412,8 @@ function checking_func(pos_arr) {
           )) /
           2
       }px`;
-      window.addEventListener("resize", linehor_2);
-      line_handler_function = linehor_2;
+      window.addEventListener("resize", linehorGenerator(1));
+      line_handler_function = linehorGenerator(1);
     }
   }
   if (pos_arr.indexOf(6) != -1 && winner != 1) {
@@ -428,8 +428,8 @@ function checking_func(pos_arr) {
           )) /
           2
       }px`;
-      window.addEventListener("resize", linehor_3);
-      line_handler_function = linehor_3;
+      window.addEventListener("resize", linehorGenerator(2));
+      line_handler_function = linehorGenerator(3);
     }
   }
   if (winner == 1) {
@@ -469,38 +469,25 @@ function checking_func(pos_arr) {
   }
 }
 //functions linehor, linever and lineslant keep in  place the position of the cutting line when the screen is resized
-function linehor_1() {
-  cutting_line.style.top = `${
-    100 +
-    blocks_arr[0].style.width.substring(
-      0,
-      blocks_arr[0].style.width.length - 2
-    ) /
-      2
-  }px`;
+
+function linehorGenerator(rowIndex)
+{
+  return function()
+  {
+    {
+      cutting_line.style.top = `${
+        100 +rowIndex*4+(2*rowIndex+1)*
+        blocks_arr[0].style.width.substring(
+          0,
+          blocks_arr[0].style.width.length - 2
+        ) /
+          2
+      }px`;
+    }
+  }
 }
-function linehor_2() {
-  cutting_line.style.top = `${
-    104 +
-    (3 *
-      blocks_arr[0].style.width.substring(
-        0,
-        blocks_arr[0].style.width.length - 2
-      )) /
-      2
-  }px`;
-}
-function linehor_3() {
-  cutting_line.style.top = `${
-    108 +
-    blocks_arr[0].style.width.substring(
-      0,
-      blocks_arr[0].style.width.length - 2
-    ) *
-      2.5
-  }px`;
-}
-function linever_1() {
+function lineverTop()
+{
   cutting_line.style.top = `${
     100 +
     blocks_arr[0].style.width.substring(
@@ -509,6 +496,9 @@ function linever_1() {
     ) *
       0.1
   }px`;
+}
+function linever_1() {
+  lineverTop();
   cutting_line.style.left = `${
     (window.innerWidth -
       box.style.width.substring(0, box.style.width.length - 2)) /
@@ -522,14 +512,7 @@ function linever_1() {
   }px`;
 }
 function linever_2() {
-  cutting_line.style.top = `${
-    100 +
-    blocks_arr[0].style.width.substring(
-      0,
-      blocks_arr[0].style.width.length - 2
-    ) *
-      0.1
-  }px`;
+  lineverTop();
   cutting_line.style.left = `${
     (window.innerWidth -
       box.style.width.substring(0, box.style.width.length - 2)) /
@@ -542,14 +525,7 @@ function linever_2() {
   }px`;
 }
 function linever_3() {
-  cutting_line.style.top = `${
-    100 +
-    blocks_arr[0].style.width.substring(
-      0,
-      blocks_arr[0].style.width.length - 2
-    ) *
-      0.1
-  }px`;
+  lineverTop();
   cutting_line.style.left = `${
     (window.innerWidth +
       8 -
@@ -562,7 +538,7 @@ function linever_3() {
       2.5
   }px`;
 }
-function lineslant_1() {
+function lineslantTopAndWidth(){
   cutting_line.style.top = `${
     100 +
     blocks_arr[0].style.width.substring(
@@ -571,6 +547,13 @@ function lineslant_1() {
     ) *
       0.25
   }px`;
+  cutting_line.style.width = `${
+    cutting_line.style.width.substring(0, cutting_line.style.width.length - 2) *
+    1.3
+  }px`;
+}
+function lineslant_1() {
+  lineslantTopAndWidth();
   cutting_line.style.left = `${
     (window.innerWidth -
       box.style.width.substring(0, box.style.width.length - 2)) /
@@ -581,20 +564,9 @@ function lineslant_1() {
     ) /
       4
   }px`;
-  cutting_line.style.width = `${
-    cutting_line.style.width.substring(0, cutting_line.style.width.length - 2) *
-    1.3
-  }px`;
 }
 function lineslant_2() {
-  cutting_line.style.top = `${
-    100 +
-    blocks_arr[0].style.width.substring(
-      0,
-      blocks_arr[0].style.width.length - 2
-    ) *
-      0.25
-  }px`;
+  lineslantTopAndWidth();
   cutting_line.style.left = `${
     (window.innerWidth -
       box.style.width.substring(0, box.style.width.length - 2)) /
@@ -605,10 +577,6 @@ function lineslant_2() {
         blocks_arr[0].style.width.length - 2
       )) /
       4
-  }px`;
-  cutting_line.style.width = `${
-    cutting_line.style.width.substring(0, cutting_line.style.width.length - 2) *
-    1.3
   }px`;
 }
 function cutting_line_ani() {
