@@ -54,55 +54,23 @@ header{
     display:flex;
     align-items:center;
     justify-content:center;
+    border-color: black
 }
-.Oxgrid:nth-child(1)
-{
-    border-bottom-color:black;
-    border-right-color: black;
-}
-.Oxgrid:nth-child(2)
-{
-    border-bottom-color:black;
-    border-right-color: black;
-}
-.Oxgrid:nth-child(3)
-{
-    border-bottom-color: black;
-    border-right:none;
-}
-.Oxgrid:nth-child(4)
-{
-    border-bottom-color:black;
-    border-right-color: black;
-}
-.Oxgrid:nth-child(5)
-{
-    border-bottom-color:black;
-    border-right-color: black;
 
-}
-.Oxgrid:nth-child(6)
+.Oxgrid:nth-child(3), .Oxgrid:nth-child(6)
 {
-    border-bottom-color: black;
     border-right:none;
+}
 
-}
-.Oxgrid:nth-child(7)
+.Oxgrid:nth-child(7), .Oxgrid:nth-child(8)
 {
-    border-right-color: black;
-    border-bottom:none;
-    
+    border-bottom: none;
 }
-.Oxgrid:nth-child(8)
-{
-    border-right-color: black;
-    border-bottom:none;
+
+.Oxgrid:nth-child(9) {
+    border: none;
 }
-.Oxgrid:nth-child(9)
-{
-    border-right:none;
-    border-bottom:none;
-}
+
 #ani_text{
     width:100vw;
     height:100vh;
@@ -121,12 +89,12 @@ header{
     text-align:center;
     color:#9905ff;
     top:62vh;
-    animation-name:inc_dec;
+    animation-name:start-game-instruction-line-animation;
     animation-duration:1.25s;
     animation-direction:alternate;
     animation-iteration-count:infinite;
 }
-@keyframes inc_dec
+@keyframes start-game-instruction-line-animation
 {
     from{
         font-size:15px;
@@ -193,7 +161,7 @@ header{
     .instruct_ng{
         font-size:19px;
     }
-    @keyframes inc_dec{
+    @keyframes start-game-instruction-line-animation{
         from{
             font-size:14px;
         }
@@ -249,7 +217,7 @@ header{
             opacity:0;
         }
     }
-    @keyframes inc_dec{
+    @keyframes start-game-instruction-line-animation{
         from{
             font-size:10px;
         }
@@ -259,10 +227,10 @@ header{
     }
 }
 .grd_intro{
-    animation-name:grd_intro;
+    animation-name:opacity_0_to_1;/*This animation is for opacity 0 to opacity 1*/
     animation-duration:2s;
 }
-@keyframes grd_intro{
+@keyframes opacity_0_to_1{
     from{
         opacity:0;
     }
@@ -289,7 +257,7 @@ header{
     font-size:30px;
 }
 .result_cls{
-    animation-name:grd_intro;/*This animation is for opacity 0 to opacity 1*/
+    animation-name:opacity_0_to_1;
     animation-duration:400ms;
 }
 #cutting_line{
@@ -339,11 +307,7 @@ header{
     margin-top:10px;
     height:90px;
 }
-.retry_nd_sound_ani
-{
-    animation-name:grd_intro;
-    animation-duration:2s;
-}
+
 a{
     position:absolute;
     right:0px;
@@ -354,12 +318,13 @@ a{
 {
     position:absolute;
     height:100px;
+    z-index: -1;
 }
-.cutting_ani_cls
+.cutting-animation-class
 {
-    animation-name:cutting_ani;
-    animation-duration:200ms;
-    animation-timing-function:linear;
+    animation-name: cutting-animation;
+    animation-duration: 200ms;
+    animation-timing-function: linear;
 }
 #grid_nd_cut_line{
     margin-bottom:5vh;

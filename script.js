@@ -1,10 +1,12 @@
 const box = document.getElementById("grid_box"); //this is the game container
 const blocks_arr = document.getElementsByClassName("Oxgrid"); //class containg all the blocks
+const headerControlsDiv = document.getElementById("retry_nd_sound");
+const cutting_line = document.getElementById("cutting_line");
 box.style.display = "none";
-const retry_bttn_cnt = document.getElementById("retry_nd_sound");
-retry_bttn_cnt.style.display = "none";
+headerControlsDiv.style.display = "none";
 window.addEventListener("resize", grd_adjust);
-var parag = document.getElementById("ani_text");
+
+const parag = document.getElementById("ani_text");
 parag.innerText = "OXO XOX OXO";
 let int;
 let int_2;
@@ -13,9 +15,9 @@ let inint_2;
 let count = 0;
 const final_str = "TIC TAC TOE";
 const final_str_2 = "OXO XOX OXO";
+let isSoundOn = true;
 let ana_int;
-let ox_var = 0; //stores whether O is to be printed or X
-const cutting_line = document.getElementById("cutting_line");
+let currentTurn = "O";
 func();
 let first_tic_tac_toe = setTimeout(funcout, 2500);
 let outerInt = setInterval(parentInterval, 5000);
@@ -148,36 +150,35 @@ function stop_ani() {
   let inst_ng = document.getElementsByClassName("instruct_ng")[0];
   inst_ng.classList.remove("instruct_ng");
   inst_ng.classList.add("click_css");
-  retry_bttn_cnt.classList.add("retry_nd_sound_ani");
   document.removeEventListener("click", stop_ani);
   setTimeout(() => {
     document.body.removeChild(parag);
     document.body.removeChild(inst_ng);
     box.style.display = "grid";
-    retry_bttn_cnt.style.display = "flex";
+    headerControlsDiv.style.display = "flex";
     grd_adjust();
     box.classList.add("grd_intro");
     for (let i = 0; i < 9; i++) {
-      blocks_arr[i].addEventListener("click", box_filling);
+      blocks_arr[i].addEventListener("click", boxFilling);
     }
     document.getElementsByTagName("a")[0].style.display = "block";
     document.getElementsByTagName("header")[0].style.display ="flex";
     document.getElementsByTagName("header")[0].classList.add("grd_intro");
   }, 2300);
-  document.getElementById("retry_bttn").addEventListener("click", new_game);
+  document.getElementById("retry_bttn").addEventListener("click", newGame);
 }
 let winner = 0;
 let filled_box = 0;
 let zero_pos = []; //To store the positions of zeros
 let cross_pos = []; //To store the positions of crosses
-function box_filling(event) {
+function boxFilling(event) {
   //To fill the boxes
   let O_X = document.createElement("p");
-  if (ox_var == 0) {
+  O_X.innerText = currentTurn;
+  filled_box++
+  if (currentTurn == "O") {
     O_X.classList.add("zero");
-    O_X.innerText = "O";
-    ox_var = 1;
-    filled_box++;
+    currentTurn = "X";
     for (let i = 0; i < 9; i++) {
       if (event.target == document.getElementsByClassName("Oxgrid")[i])
         zero_pos.push(i);
@@ -186,9 +187,7 @@ function box_filling(event) {
     document.getElementById("circle_sound").play();
   } else {
     O_X.classList.add("cross");
-    O_X.innerText = "X";
-    ox_var = 0;
-    filled_box++;
+    currentTurn = "O";
     for (let i = 0; i < 9; i++) {
       if (event.target == document.getElementsByClassName("Oxgrid")[i])
         cross_pos.push(i);
@@ -230,16 +229,16 @@ function box_filling(event) {
     }`;
   O_X.classList.add("O_or_X");
   event.target.appendChild(O_X);
-  event.target.removeEventListener("click", box_filling); //Removing event listener from the box which has been immediately filled
+  event.target.removeEventListener("click", boxFilling); //Removing event listener from the box which has been immediately filled
   //Cheking whether the game is over or not
   if (filled_box >= 5) {
-    checking_func(zero_pos);
-    if (winner == 0) checking_func(cross_pos);
+    winnerCheckingFunction(zero_pos);
+    if (winner == 0) winnerCheckingFunction(cross_pos);
   }
-  cursor_change(event);
+  putCharacterOnCursor(event);
 }
 let line_handler_function;
-function checking_func(pos_arr) {
+function winnerCheckingFunction(pos_arr) {
   if (pos_arr.indexOf(0) != -1) {
     if (pos_arr.indexOf(1) != -1 && pos_arr.indexOf(2) != -1) {
       winner = 1;
@@ -447,7 +446,7 @@ function checking_func(pos_arr) {
     }
     document.getElementById("result_div").appendChild(result);
     for (let i = 0; i < 9; i++)
-      blocks_arr[i].removeEventListener("click", box_filling);
+      blocks_arr[i].removeEventListener("click", boxFilling);
     cutting_line.style.visibility = "visible";
 
     document.getElementsByTagName("a")[0].style.bottom = "0px";
@@ -462,7 +461,7 @@ function checking_func(pos_arr) {
     result.setAttribute("id", "result");
     result.style.color = "rgb(50,50,50)";
     document.getElementById("result_div").appendChild(result);
-    winner = 2; //This is to prevent checking_func to run for cross when it is a draw. This is done only for when O wins in the last turn
+    winner = 2; //This is to prevent winnerCheckingFunction to run for cross when it is a draw. This is done only for when O wins in the last turn
     document.getElementsByTagName("a")[0].style.bottom = "0px";
     attribution_pos();
     result.classList.add("result_cls");
@@ -580,8 +579,8 @@ function lineslant_2() {
   }px`;
 }
 function cutting_line_ani() {
-  let style_for_ani = document.getElementsByTagName("style")[0];
-  style_for_ani.innerHTML += `@keyframes cutting_ani{
+  let internalStyles = document.getElementsByTagName("style")[0];
+  internalStyles.innerHTML += `@keyframes cutting-animation{
         from{
             width:0px;
         }
@@ -589,13 +588,13 @@ function cutting_line_ani() {
         {
             width:${cutting_line.style.width};
         }`;
-  document.head.appendChild(style_for_ani);
-  cutting_line.classList.add("cutting_ani_cls");
+  document.head.appendChild(internalStyles);
+  cutting_line.classList.add("cutting-animation-class");
 }
-function new_game() {
+function newGame() {
   let all_alphas = document.getElementsByClassName("O_or_X");
-  let alpha_amt = all_alphas.length;
-  for (let i = 0; i < alpha_amt; i++) {
+  let totalElementsInGrid = all_alphas.length;
+  for (let i = 0; i < totalElementsInGrid; i++) {
     all_alphas[0].remove();
   }
   cutting_line.style.visibility = "hidden";
@@ -603,25 +602,24 @@ function new_game() {
     document.getElementById("result").remove();
   winner = 0;
   for (let i = 0; i < 9; i++) {
-    blocks_arr[i].addEventListener("click", box_filling);
+    blocks_arr[i].addEventListener("click", boxFilling);
   }
   zero_pos = [];
   cross_pos = [];
-  ox_var = 0;
+  currentTurn = "O";
   filled_box = 0;
   cutting_line.style.transform = "rotate(0deg)";
-  cutting_line.classList.remove("cutting_ani_cls");
+  cutting_line.classList.remove("cutting-animation-class");
   grd_adjust();
   window.removeEventListener("resize", line_handler_function);
   attribution_pos();
 }
 document.getElementById("sound_bttn").addEventListener("click", sound_on_off);
-let sound_var = true;
 let mute_bttn = document.getElementById("mute_bttn");
 mute_bttn.style.display = "none";
 mute_bttn.addEventListener("click", sound_on_off);
 function sound_on_off() {
-  if (sound_var) {
+  if (isSoundOn) {
     document.getElementById("cross_sound").muted = true;
     document.getElementById("circle_sound").muted = true;
     mute_bttn.style.display = "block";
@@ -636,7 +634,7 @@ function sound_on_off() {
     document.getElementById("sound_bttn").style.zIndex = "2";
     mute_bttn.style.zIndex = "1";
   }
-  sound_var = !sound_var;
+  isSoundOn = !isSoundOn;
 }
 const attri = document.getElementsByTagName("a")[0];
 attribution_pos();
@@ -660,11 +658,10 @@ function attribution_pos() {
     attri.style.top = `${window.innerHeight - 15}px`;
   }
 }
-attribution_pos;
 window.addEventListener("resize", attribution_pos);
-box.addEventListener("mousemove", cursor_change);
-box.addEventListener("mouseout", cursor_normal);
-function cursor_change(event) {
+box.addEventListener("mousemove", putCharacterOnCursor);
+box.addEventListener("mouseout", makeCursorNormal);
+function putCharacterOnCursor(event) {
   if (window.innerWidth > 800) {
     let cursor_char = document.getElementById("cursor_char");
     if (
@@ -675,23 +672,16 @@ function cursor_change(event) {
       box.style.cursor = "none";
       cursor_char.style.visibility = "visible";
       cursor_char.style.fontSize = `${box.clientHeight / 10}px`;
-      if (ox_var == 0) {
-        cursor_char.innerText = "O";
-        cursor_char.style.color = "blue";
-      } else {
-        cursor_char.innerText = "X";
-        cursor_char.style.color = "red";
-      }
+      cursor_char.innerText = currentTurn;
+      currentTurn === "O" ? cursor_char.style.color = "blue": cursor_char.style.color = "red";
       cursor_char.style.top = `${event.clientY - box.clientHeight / 20}px`;
       cursor_char.style.left = `${event.clientX - box.clientHeight / 35}px`;
-      cursor_char.style.zIndex = -1;
     } else {
-      box.style.cursor = "default";
-      cursor_char.style.visibility = "hidden";
+      makeCursorNormal();
     }
   }
 }
-function cursor_normal() {
+function makeCursorNormal() {
   document.getElementById("cursor_char").style.visibility = "hidden";
   box.style.cursor = "default";
 }
