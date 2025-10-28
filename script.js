@@ -160,6 +160,7 @@ function stop_ani() {
     for (let i = 0; i < 9; i++) {
       blocks_arr[i].addEventListener("click", boxFilling);
     }
+    document.getElementsByTagName("a")[0].style.display = "block";
     document.getElementsByTagName("header")[0].style.display ="flex";
     document.getElementsByTagName("header")[0].classList.add("grd_intro");
   }, 2300);
