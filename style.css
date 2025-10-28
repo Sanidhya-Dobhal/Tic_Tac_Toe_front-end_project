@@ -255,8 +255,6 @@ header{
 #result{
     text-align:center;
     font-size:30px;
-}
-.result_cls{
     animation-name:opacity_0_to_1;
     animation-duration:400ms;
 }

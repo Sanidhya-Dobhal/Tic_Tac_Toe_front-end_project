@@ -112,7 +112,6 @@ function grd_adjust() {
   cutting_line.style.left = `${
     (window.innerWidth - new_width) / 2 + new_blk_width * 0.1
   }px`;
-  document.getElementsByTagName("a")[0].style.bottom = "0px";
 }
 document.addEventListener("keypress", key_stop_ani);
 function key_stop_ani(event) {
@@ -161,7 +160,6 @@ function stop_ani() {
     for (let i = 0; i < 9; i++) {
       blocks_arr[i].addEventListener("click", boxFilling);
     }
-    document.getElementsByTagName("a")[0].style.display = "block";
     document.getElementsByTagName("header")[0].style.display ="flex";
     document.getElementsByTagName("header")[0].classList.add("grd_intro");
   }, 2300);
@@ -444,15 +442,13 @@ function winnerCheckingFunction(pos_arr) {
         document.querySelector("#score_disp div:nth-child(3) p:nth-child(2)").innerText = Number(document.querySelector("#score_disp div:nth-child(3) p:nth-child(2)").innerText)+1;//Updates the number of wins of X in the score_disp
         result.style.color = cutting_line.style.backgroundColor = "red";
     }
-    document.getElementById("result_div").appendChild(result);
+    document.getElementById("result-message").appendChild(result);
     for (let i = 0; i < 9; i++)
       blocks_arr[i].removeEventListener("click", boxFilling);
     cutting_line.style.visibility = "visible";
 
-    document.getElementsByTagName("a")[0].style.bottom = "0px";
     attribution_pos();
     cutting_line_ani();
-    result.classList.add("result_cls");
   } 
   else if (filled_box == 9) {
     let result = document.createElement("p");
@@ -460,11 +456,9 @@ function winnerCheckingFunction(pos_arr) {
     document.querySelector("#score_disp div:nth-child(2) p:nth-child(2)").innerText = Number(document.querySelector("#score_disp div:nth-child(2) p:nth-child(2)").innerText)+1;//Updates the number of draws in the score_disp
     result.setAttribute("id", "result");
     result.style.color = "rgb(50,50,50)";
-    document.getElementById("result_div").appendChild(result);
+    document.getElementById("result-message").appendChild(result);
     winner = 2; //This is to prevent winnerCheckingFunction to run for cross when it is a draw. This is done only for when O wins in the last turn
-    document.getElementsByTagName("a")[0].style.bottom = "0px";
     attribution_pos();
-    result.classList.add("result_cls");
   }
 }
 //functions linehor, linever and lineslant keep in  place the position of the cutting line when the screen is resized
@@ -642,7 +636,7 @@ function attribution_pos() {
   if (
     100 +
       new_width +
-      document.getElementById("result_div").scrollHeight +
+      document.getElementById("result-message").scrollHeight +
       0.05 * window.innerHeight +
       20 >
     window.innerHeight
@@ -650,7 +644,7 @@ function attribution_pos() {
     attri.style.top = `${
       100 +
       new_width +
-      document.getElementById("result_div").scrollHeight +
+      document.getElementById("result-message").scrollHeight +
       0.05 * window.innerHeight +
       20
     }px`;
